@@ -1,7 +1,7 @@
 
 // The same environment, that will be shared between all the components
 
-import { useContext, useReducer } from "react";
+import { createContext, useReducer , useContext} from "react";
 
 const TodoContext = createContext();
 
@@ -19,7 +19,7 @@ const TodoProvider = ({children}) => {
     const todoReducer = (state, action)=>{
         switch (action.type){
             case 'ADD_TODO':
-
+             
             // spread operator to modify the state object
             // spread operator to add a new todo at the end of array todos
             return {

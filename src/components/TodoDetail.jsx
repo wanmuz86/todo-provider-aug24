@@ -1,13 +1,18 @@
 import React from 'react'
+import { useTodo } from '../lib/TodoContext'
+const TodoDetail = ({todo}) => {
 
-const TodoDetail = () => {
+    const {dispatch} = useTodo();
+
     const handleRemove = () => {
+        console.log(todo.id)
+        dispatch({type:'REMOVE_TODO', payload:todo.id})
 
     }
   return (
     <div>
-        <h3>Item Name</h3>
-        <button onChange={handleRemove}>Remove</button>
+        <h3>{todo.name}</h3>
+        <button onClick={handleRemove}>Remove</button>
     </div>
   )
 }

@@ -9,9 +9,9 @@ const TodoList = () => {
             <h2>Todo List</h2>
             <ul>
                 {
-                    state.todos.map(val => {
+                    state.todos.map(val => 
                         <li key={val.id}><TodoDetail todo={val}/></li>
-                    })
+                    )
                 }
             </ul>
         </div>

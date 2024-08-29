@@ -6,6 +6,7 @@ const Add = () => {
 
     const addTodo = () => {
         if ( text.length > 0){
+      
             dispatch({type:'ADD_TODO', payload:{id:Date.now(), name:text}});
             setText('') // Clean back the input
         }
