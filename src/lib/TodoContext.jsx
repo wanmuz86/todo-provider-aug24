@@ -5,7 +5,7 @@ import { useContext, useReducer } from "react";
 
 const TodoContext = createContext();
 
-// I am creating a component <TodoProvider>
+// I am creating a function   <TodoProvider>
 // {children} refers to the component within it, child, and grandhildren <TodoProvider><App/></TodoProvider>
 // All components declared as children will have access to the state and methods defined here
 const TodoProvider = ({children}) => {
@@ -40,14 +40,22 @@ const TodoProvider = ({children}) => {
         }
     }
 
+    // Process of exporting the state and the actions 
+    // useReducer is used to combine the state and reducer so it can be imported by the component
+    // the component will call dispatch if it needs access to todoReducer, and state, for the state
+
     const [state, dispatch] = useReducer(todoReducer, initialState);
     return (
+        // Process of exporting the coponnet to be <TodoProvider> and linked it the state and dispatch
         <TodoContext.Provider value={{state,dispatch}}>
             {children}
         </TodoContext.Provider>
     )
 };
 
+// Create and Export a custom hook that contains dispatch and action,
+// Components can access dispatch and action by importing the hook
+// THis hook needs to be called within <TodoProvider>
 const useTodo = () => {
     const context = useContext(TodoContext);
     if (!context) {
