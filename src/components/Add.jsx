@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
-
+import { useTodo } from '../lib/TodoContext';
 const Add = () => {
     const [text,setText] = useState('');
+    const {dispatch} = useTodo();
+
     const addTodo = () => {
+        if ( text.length > 0){
+            dispatch({type:'ADD_TODO', payload:{id:Date.now(), name:text}});
+            setText('') // Clean back the input
+        }
 
     }
   return (

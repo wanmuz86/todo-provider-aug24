@@ -53,7 +53,7 @@ const TodoProvider = ({children}) => {
     )
 };
 
-// Create and Export a custom hook that contains dispatch and action,
+// Create and Export a custom hook that perform validation on where it is called, and return dispatch and action if it is called correctly
 // Components can access dispatch and action by importing the hook
 // THis hook needs to be called within <TodoProvider>
 const useTodo = () => {

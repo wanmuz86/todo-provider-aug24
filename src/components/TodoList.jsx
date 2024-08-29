@@ -1,14 +1,18 @@
 import React from 'react'
 import TodoDetail from './TodoDetail'
-
+import { useTodo } from '../lib/TodoContext'
 const TodoList = () => {
+
+    const { state } = useTodo();
     return (
         <div>
             <h2>Todo List</h2>
             <ul>
-                <li><TodoDetail /></li>
-                <li><TodoDetail /></li>
-                <li><TodoDetail /></li>
+                {
+                    state.todos.map(val => {
+                        <li key={val.id}><TodoDetail todo={val}/></li>
+                    })
+                }
             </ul>
         </div>
     )
