@@ -1,6 +1,8 @@
 
 // The same environment, that will be shared between all the components
 
+import { useContext, useReducer } from "react";
+
 const TodoContext = createContext();
 
 // I am creating a component <TodoProvider>
@@ -38,6 +40,20 @@ const TodoProvider = ({children}) => {
         }
     }
 
+    const [state, dispatch] = useReducer(todoReducer, initialState);
+    return (
+        <TodoContext.Provider value={{state,dispatch}}>
+            {children}
+        </TodoContext.Provider>
+    )
 };
 
-export {TodoProvider}
+const useTodo = () => {
+    const context = useContext(TodoContext);
+    if (!context) {
+        throw new Error('useTodo must be used within a TodoProvider')
+    }
+    return context
+}
+
+export {TodoProvider,useTodo}
