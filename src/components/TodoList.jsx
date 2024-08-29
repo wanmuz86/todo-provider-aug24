@@ -6,11 +6,11 @@ const TodoList = () => {
         <div>
             <h2>Todo List</h2>
             <ul>
-                <li><TodoDetail/></li>
-                <li><TodoDetail/></li>
-                <li><TodoDetail/></li>
+                <li><TodoDetail /></li>
+                <li><TodoDetail /></li>
+                <li><TodoDetail /></li>
             </ul>
-            </div>
+        </div>
     )
 }
 
